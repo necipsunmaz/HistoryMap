@@ -1,0 +1,9 @@
+﻿@model List<CountryDetails>
+
+<ul>
+    @foreach (CountryDetails item in Model)
+    {
+        <li>@item.Name  ve @item.CountryCode</li>
+    }
+</ul>
+
