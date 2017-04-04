@@ -8,8 +8,8 @@ using HistoryMap.Models;
 namespace HistoryMap.Migrations
 {
     [DbContext(typeof(ApplicationDb))]
-    [Migration("20170329063448_First")]
-    partial class First
+    [Migration("20170402134231_First2")]
+    partial class First2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -17,24 +17,19 @@ namespace HistoryMap.Migrations
                 .HasAnnotation("ProductVersion", "1.1.1")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("HistoryMap.Models.CountryDetails", b =>
+            modelBuilder.Entity("HistoryMap.Models.Centuries", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("CountryCode")
-                        .IsRequired()
-                        .HasMaxLength(15);
+                    b.Property<int>("Century");
 
-                    b.Property<byte[]>("Data");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(80);
+                    b.Property<byte[]>("Data")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
-                    b.ToTable("CountryDetails");
+                    b.ToTable("Centuries");
                 });
         }
     }

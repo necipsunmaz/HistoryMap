@@ -8,9 +8,10 @@ using HistoryMap.Models;
 namespace HistoryMap.Migrations
 {
     [DbContext(typeof(ApplicationDb))]
-    partial class ApplicationDbModelSnapshot : ModelSnapshot
+    [Migration("20170402132117_First1")]
+    partial class First1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.1")
@@ -36,7 +37,9 @@ namespace HistoryMap.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("CenturyId");
+                    b.Property<int>("Centuries_Id");
+
+                    b.Property<int?>("CenturyId");
 
                     b.Property<string>("Details")
                         .HasColumnType("text");
@@ -54,9 +57,8 @@ namespace HistoryMap.Migrations
             modelBuilder.Entity("HistoryMap.Models.Countries", b =>
                 {
                     b.HasOne("HistoryMap.Models.Centuries", "Century")
-                        .WithMany("Country")
-                        .HasForeignKey("CenturyId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .WithMany("Countries")
+                        .HasForeignKey("CenturyId");
                 });
         }
     }

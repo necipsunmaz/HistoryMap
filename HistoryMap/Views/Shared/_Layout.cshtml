@@ -4,11 +4,12 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - HistoryMap</title>
+    <title>@ViewData["Title"] - HistoryMaps</title>
 
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
+        <link href="~/css/historymap.css" rel="stylesheet" />
     </environment>
     <environment names="Staging,Production">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -28,7 +29,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">HistoryMap</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">HistoryMaps</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -43,11 +44,59 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2017 - HistoryMap</p>
+            <p>&copy; 2017 - HistoryMaps</p>
         </footer>
     </div>
 
     <environment names="Development">
+        <script src="~/js/historymap.js"></script>
+        <script src="http://localhost:55507/Centuries/GetData"></script>
+        <script src="~/js/dark.js"></script>
+        <script>
+            HistoryMaps.theme = HistoryMaps.themes.black;
+            // add all your code to this method, as this will ensure that page is loaded
+            HistoryMaps.ready(function () {
+                // create HisMap object
+                var map = new HistoryMaps.HisMap();
+
+                // set path to images
+
+
+			    /* create data provider object
+			     mapVar tells the map name of the variable of the map data. You have to
+			     view source of the map file you included in order to find the name of the
+			     variable - it's the very first line after commented lines.
+
+			     getAreasFromMap indicates that amMap should read all the areas available
+			     in the map data and treat them as they are included in your data provider.
+			     in case you don't set it to true, all the areas except listed in data
+			     provider will be treated as unlisted.
+			    */
+                var dataProvider = {
+                    mapVar: HistoryMaps.maps.worldLow,
+                    getAreasFromMap: true
+                };
+                // pass data provider to the map object
+                map.dataProvider = dataProvider;
+
+			    /* create areas settings
+			     * autoZoom set to true means that the map will zoom-in when clicked on the area
+			     * selectedColor indicates color of the clicked area.
+			     */
+                map.areasSettings = {
+                    autoZoom: true,
+                    rollOverBrightness: 10,
+                    selectedBrightness: 20
+                };
+
+                // let's say we want a small map to be displayed, so let's create and add it to the map
+                map.smallMap = new HistoryMaps.SmallMap();
+
+                // write the map to container div
+                map.write("mapdiv");
+            });
+
+        </script>
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>

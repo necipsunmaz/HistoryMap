@@ -12,7 +12,7 @@ namespace HistoryMap.Models
         {
 
         }
-        public DbSet<CountryDetails> CountryDetail { get; set; }
+        public DbSet<Centuries> Centuries { get; set; }
 
     }
 }

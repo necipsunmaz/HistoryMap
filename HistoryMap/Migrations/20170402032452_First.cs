@@ -10,25 +10,24 @@ namespace HistoryMap.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "CountryDetails",
+                name: "Centuries",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CountryCode = table.Column<string>(maxLength: 15, nullable: false),
-                    Data = table.Column<byte[]>(nullable: true),
-                    Name = table.Column<string>(maxLength: 80, nullable: false)
+                    Century = table.Column<int>(nullable: false),
+                    Data = table.Column<byte[]>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CountryDetails", x => x.Id);
+                    table.PrimaryKey("PK_Centuries", x => x.Id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "CountryDetails");
+                name: "Centuries");
         }
     }
 }

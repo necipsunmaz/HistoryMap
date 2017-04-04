@@ -7,6 +7,18 @@
   <PropertyGroup>
     <PackageTargetFallback>$(PackageTargetFallback);portable-net45+win8+wp8+wpa81;</PackageTargetFallback>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot/js\black.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\css\historymap.css" />
+    <Content Include="wwwroot\js\black.js" />
+    <Content Include="wwwroot\js\dark.js" />
+    <Content Include="wwwroot\js\historymap.js" />
+    <Content Include="wwwroot\js\historymaps.js" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
