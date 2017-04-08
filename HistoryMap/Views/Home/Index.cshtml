@@ -33,7 +33,6 @@
                 </svg>
             </div>
         </header>
-
         <!-- The Modal -->
         <div id="myModal" class="modal">
 
@@ -44,58 +43,72 @@
             </div>
 
         </div>
-
         <div id="mapdiv" style="position:absolute; width: 100%; height:100%;"></div>
+        <input type="range" style="width: 300px !important;position:absolute" id="rngCenturie" value="0" max="20" width="200" step="1">
     </div>
 </body>
 
+
 @section Scripts{
 <script>
-            HistoryMaps.theme = HistoryMaps.themes.black;
-            HistoryMaps.ready(function () {
-                var map = new HistoryMaps.HisMap();
-                var dataProvider = {
-                    mapVar: HistoryMaps.maps.Centuries,
-                    getAreasFromMap: true
-                };
-                map.dataProvider = dataProvider;
-                map.areasSettings = {
-                    autoZoom: true,
-                    rollOverBrightness: 10,
-                    selectedBrightness: 20
-                };
-                map.smallMap = new HistoryMaps.SmallMap();
-                map.write("mapdiv");
-
-                $("svg").on("click", "path", function () {
-                    var title = { country: $(this).attr('aria-label') };
+    var YY;
+    var scriptekle;
+    HistoryMaps.theme = HistoryMaps.themes.black;
+        $('#rngCenturie').on("change", function () {
+            YY = { Centurie: document.getElementById('rngCenturie').value };
+            alert("You have " + YY.Centurie + " books overdue.");
                     $.ajax({
-                        url: '/Home/GetCountryDetails',
+                        url: '/Home/GetData',
                         type: 'POST',
-                        dataType: 'json',
-                        data: title,
-                        success: function (Country) {
-                            alert(Country.details);
-                            var modal = document.getElementById('myModal');
-                            var span = document.getElementsByClassName("close")[0];
+                        dataType: 'script',
+                        data: YY,
+                        success: function (Centurie) {
+                            alert(Centurie);
+                            var donen = Centurie;
+                            $("head").append(Centurie);
+                            var map = new HistoryMaps.HisMap();
+                            var dataProvider = {
+                                mapVar: HistoryMaps.maps.Centuries,
+                                getAreasFromMap: true
+                            };
+                            map.dataProvider = dataProvider;
+                            map.areasSettings = {
+                                autoZoom: true,
+                                rollOverBrightness: 10,
+                                selectedBrightness: 20
+                            };
+                            map.smallMap = new HistoryMaps.SmallMap();
+                            map.write("mapdiv");
+                            $("svg").on("click", "path", function () {
+                                var title = { country: $(this).attr('aria-label') };
+                                $.ajax({
+                                    url: '/Home/GetCountryDetails',
+                                    type: 'POST',
+                                    dataType: 'json',
+                                    data: title,
+                                    success: function (Country) {
+                                        alert(Country.details);
+                                        var modal = document.getElementById('myModal');
+                                        var span = document.getElementsByClassName("close")[0];
 
-                            document.getElementById("ModalContent").innerHTML = JSON.parse(JSON.stringify(Country.details));
+                                        document.getElementById("ModalContent").innerHTML = JSON.parse(JSON.stringify(Country.details));
 
-                            modal.style.display = "block";
-                            span.onclick = function () {
-                                modal.style.display = "none";
-                            }
+                                        modal.style.display = "block";
+                                        span.onclick = function () {
+                                            modal.style.display = "none";
+                                        }
 
-                            // When the user clicks anywhere outside of the modal, close it
-                            window.onclick = function (event) {
-                                if (event.target == modal) {
-                                    modal.style.display = "none";
-                                }
-                            }
+                                        // When the user clicks anywhere outside of the modal, close it
+                                        window.onclick = function (event) {
+                                            if (event.target == modal) {
+                                                modal.style.display = "none";
+                                            }
+                                        }
+                                    }
+                                });
+                            });
                         }
                     });
                 });
-
-            });
 </script>
 }

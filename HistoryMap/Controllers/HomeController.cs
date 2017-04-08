@@ -34,9 +34,9 @@ namespace HistoryMap.Controllers
             return Json(Country);
         }
 
-        public IActionResult GetData()
+        public IActionResult GetData(int Centurie)
         {
-            var centuryMap = db.Centuries.FirstOrDefault(a => a.Century.Equals(19));
+            var centuryMap = db.Centuries.FirstOrDefault(a => a.Century.Equals(Centurie));
             MemoryStream file = new MemoryStream(centuryMap.Data);
             //binaryData
             return new FileStreamResult(file, "application/javascript");
