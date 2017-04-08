@@ -13,11 +13,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="wwwroot\css\historymap.css" />
-    <Content Include="wwwroot\js\black.js" />
-    <Content Include="wwwroot\js\dark.js" />
     <Content Include="wwwroot\js\historymap.js" />
     <Content Include="wwwroot\js\historymaps.js" />
+    <Content Include="wwwroot\js\modernizr.custom.js" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />

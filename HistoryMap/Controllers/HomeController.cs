@@ -21,48 +21,26 @@ namespace HistoryMap.Controllers
             db = _db;
         }
 
-        public JsonResult GetCountryDetails(string title)
-        {
-            return null;        }
-
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
 
         public IActionResult Error()
         {
             return View();
         }
 
+        [HttpPost]
+        public IActionResult GetCountryDetails(string country)
+        {
+            var Country = db.Countries.FirstOrDefault(a => a.Title.Equals(country));
+            return Json(Country);
+        }
+
         public IActionResult GetData()
         {
             var centuryMap = db.Centuries.FirstOrDefault(a => a.Century.Equals(19));
             MemoryStream file = new MemoryStream(centuryMap.Data);
-            //Response.ContentType = "application/js";
-            //file.WriteTo(Response.OutputSetream)
-            //byte[] binaryData = centuryMap.Data.ToArray();
-            //centuryMap
-
             //binaryData
             return new FileStreamResult(file, "application/javascript");
         }
 
-        //public IActionResult Index()
-        //{
-        //    var centuryMap = db.Centuries.FirstOrDefault(a => a.Century.Equals(19));
-        //    MemoryStream file = new MemoryStream(centuryMap.Data);
-        //    ViewData["JS"] = file.ReadByte();
-        //    return View();
-        //}
     }
 }

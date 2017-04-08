@@ -13,6 +13,7 @@ namespace HistoryMap.Models
 
         }
         public DbSet<Centuries> Centuries { get; set; }
+        public DbSet<Countries> Countries { get; set; }
 
     }
 }
