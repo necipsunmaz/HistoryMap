@@ -44,38 +44,72 @@
 
         </div>
         <div id="mapdiv" style="position:absolute; width: 100%; height:100%;"></div>
-        <input type="range" class="rndCenturies" id="rngCenturie" value="0" max="20" step="1">
-        <div style="text-align: center;">
-            <div id="txtCenturies" style="position: absolute; width: 50%; height: 300px; left: 50%; top:100px; margin: 0 0 0 -25%;color:white;font-size:220px;">asdasdasd</div>
-        </div>
+
+        <div class="CONTAINER" style="position: fixed; align-self: center;width: 80%;bottom: 0;right: 25px;">
+            <!-- history slider -->
+            <div class="HistorySlider" id="HistorySlider">
+                <div class="HistorySlider_ParticipantName">Yüzyıl Seçiniz</div>
+                <div class="HistorySlider_ClickArea">
+                    <div class="HistorySlider_Track">
+                        <div class="HistorySlider_TrackFill" style="width: 95%;">
+                            <div class="HistorySlider_Thumb" id="historySlider"></div>
+                        </div>
+                    </div><!-- /.HistorySlider_Track -->
+                    <div class="HistorySlider_Points">
+                        <div class="HistorySlider_Point">0</div>
+                        <div class="HistorySlider_Point">100</div>
+                        <div class="HistorySlider_Point">200</div>
+                        <div class="HistorySlider_Point">300</div>
+                        <div class="HistorySlider_Point">400</div>
+                        <div class="HistorySlider_Point">500</div>
+                        <div class="HistorySlider_Point">600</div>
+                        <div class="HistorySlider_Point">700</div>
+                        <div class="HistorySlider_Point">800</div>
+                        <div class="HistorySlider_Point">900</div>
+                        <div class="HistorySlider_Point">1000</div>
+                        <div class="HistorySlider_Point">1100</div>
+                        <div class="HistorySlider_Point">1200</div>
+                        <div class="HistorySlider_Point">1300</div>
+                        <div class="HistorySlider_Point">1400</div>
+                        <div class="HistorySlider_Point">1500</div>
+                        <div class="HistorySlider_Point">1600</div>
+                        <div class="HistorySlider_Point">1700</div>
+                        <div class="HistorySlider_Point">1800</div>
+                        <div class="HistorySlider_Point HistorySlider_PointActive">1900</div>
+                        <div class="HistorySlider_Point">2000</div>
+                    </div><!-- /.HistorySlider_Points -->
+                </div><!-- /.HistorySlider_ClickArea -->
+            </div><!-- /.HistorySlider -->
+        </div><!-- /.CONTAINER -->
     </div>
 </body>
 
 
 @section Scripts{
+
+<script id="centuryMap"></script>/>
+<script src="~/js/modernizr.custom.js"></script>
+<script src="~/js/historymap.js"></script>
+
     <script>
-        var YY;
-        var scriptekle;
-        var spanCenturie;
         HistoryMaps.theme = HistoryMaps.themes.black;
-        $('#rngCenturie').on("mousemove", function () {
-            document.getElementById("txtCenturies").hidden = false;
-            document.getElementById("txtCenturies").innerHTML = document.getElementById('rngCenturie').value + ". YY";
+
+        $("document").ready(function () {
+            setTimeout(function () {
+                $('#historySlider').trigger('click');
+            }, 10);
         });
-        $('#rngCenturie').on("mouseout", function () {
-            document.getElementById("txtCenturies").hidden = true;
-        });
-        $('#rngCenturie').on("change", function () {
-            YY = { Centurie: document.getElementById('rngCenturie').value };
-            document.getElementById("txtCenturies").hidden = true;
+
+        $('#historySlider').click(function () {
+            var Century = { Centurie: historySlider.value };
             $.ajax({
                 url: '/Home/GetData',
                 type: 'POST',
                 dataType: 'script',
-                data: YY,
+                data: Century,
                 success: function (Centurie) {
-                    var donen = Centurie;
-                    $("head").append(Centurie);
+                    var nmp = document.getElementById("centuryMap");
+                    nmp.innerHTML = Centurie;
                     var map = new HistoryMaps.HisMap();
                     var dataProvider = {
                         mapVar: HistoryMaps.maps.Centuries,
@@ -90,14 +124,13 @@
                     map.smallMap = new HistoryMaps.SmallMap();
                     map.write("mapdiv");
                     $("svg").on("click", "path", function () {
-                        var title = { country: $(this).attr('aria-label') };
+                        var title = { country: $(this).attr('aria-label'), id: historySlider.value };
                         $.ajax({
                             url: '/Home/GetCountryDetails',
                             type: 'POST',
                             dataType: 'json',
                             data: title,
                             success: function (Country) {
-                                alert(Country.details);
                                 var modal = document.getElementById('myModal');
                                 var span = document.getElementsByClassName("close")[0];
 
