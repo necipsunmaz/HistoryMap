@@ -1,0 +1,46 @@
+@model Country
+@{
+    Layout = null;
+}
+
+<h2>Save Country</h2>
+
+<script src="~/lib/ckeditor/ckeditor.js"></script>
+@using (Html.BeginForm("Save", "Admin", FormMethod.Post, new { id = "popupForm" }))
+{
+    if (Model != null && Model.Id > 0)
+    {
+        Html.HiddenFor(a => a.Id);
+    }
+
+    @Html.HiddenFor(a => a.CenturyId, new { @id = "centuryId" })
+    <div class="form-group">
+        @Html.TextBoxFor(a => a.Title, new { @class = "form-control", @placeholder = "Country Name" })
+        @Html.ValidationMessageFor(a => a.Title)
+    </div>
+    <div class="form-group">
+        @Html.TextAreaFor(a => a.Details, new { @id = "details" })
+    </div>
+    <div class="form-group">
+        @Html.TextBoxFor(a => a.Description, new { @class = "form-control", @placeholder = "Description" })
+        @Html.ValidationMessageFor(a => a.Description)
+    </div>
+    <div>
+        <input type="submit" class="btn btn-default" style="float:right;" value="Save" />
+    </div>
+}
+
+<script>
+    $("document").ready(function () {
+        CKEDITOR.replace('details');
+        document.getElementById('centuryId').value = @ViewBag.centuryid;
+    });
+
+    //function updateValue(id, value) {
+    //    // this gets called from the popup window and updates the field with a new value
+    //    document.getElementById(id).value = value;
+
+    //}
+</script>
+<script src="~/lib/jquery.validation/dist/jquery.validate.js"></script>
+<script src="~/lib/Microsoft.jQuery.Unobtrusive.Validation/jquery.validate.unobtrusive.min.js"></script>

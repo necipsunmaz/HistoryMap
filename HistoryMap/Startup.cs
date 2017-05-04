@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using HistoryMap.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace HistoryMap
 {
@@ -21,6 +22,7 @@ namespace HistoryMap
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
+            builder.AddEnvironmentVariables();
             Configuration = builder.Build();
         }
 
@@ -31,11 +33,22 @@ namespace HistoryMap
         {
             // Add framework services.
             //services.AddDbContext<ApplicationDb>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDbContext<ApplicationDb>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddEntityFrameworkSqlServer()
+                .AddDbContext<ApplicationDb>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            //services.AddDbContext<ApplicationDb>(options =>
+            //        options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddIdentity<ApplicationUser, IdentityRole>(options => {
+                options.Cookies.ApplicationCookie.LoginPath = "/Admin/Index";
+                options.Cookies.ApplicationCookie.LogoutPath = "/Admin/Logout";
+            })
+                .AddEntityFrameworkStores<ApplicationDb>()
+                .AddDefaultTokenProviders();
             services.AddMvc();
+
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -54,6 +67,7 @@ namespace HistoryMap
             }
 
             app.UseStaticFiles();
+            app.UseIdentity();
 
             app.UseMvc(routes =>
             {

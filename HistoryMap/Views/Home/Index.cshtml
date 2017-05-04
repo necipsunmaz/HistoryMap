@@ -51,7 +51,7 @@
                 <div class="HistorySlider_ParticipantName">Yüzyıl Seçiniz</div>
                 <div class="HistorySlider_ClickArea">
                     <div class="HistorySlider_Track">
-                        <div class="HistorySlider_TrackFill" style="width: 95%;">
+                        <div class="HistorySlider_TrackFill" style="width: 100%;">
                             <div class="HistorySlider_Thumb" id="historySlider"></div>
                         </div>
                     </div><!-- /.HistorySlider_Track -->
@@ -75,8 +75,8 @@
                         <div class="HistorySlider_Point">1600</div>
                         <div class="HistorySlider_Point">1700</div>
                         <div class="HistorySlider_Point">1800</div>
-                        <div class="HistorySlider_Point HistorySlider_PointActive">1900</div>
-                        <div class="HistorySlider_Point">2000</div>
+                        <div class="HistorySlider_Point">1900</div>
+                        <div class="HistorySlider_Point HistorySlider_PointActive">2000</div>
                     </div><!-- /.HistorySlider_Points -->
                 </div><!-- /.HistorySlider_ClickArea -->
             </div><!-- /.HistorySlider -->
@@ -101,18 +101,18 @@
         });
 
         $('#historySlider').click(function () {
-            var Century = { Centurie: historySlider.value };
+            var Century = { Century: historySlider.value };
             $.ajax({
                 url: '/Home/GetData',
                 type: 'POST',
                 dataType: 'script',
                 data: Century,
-                success: function (Centurie) {
+                success: function (Century) {
                     var nmp = document.getElementById("centuryMap");
-                    nmp.innerHTML = Centurie;
+                    nmp.innerHTML = Century;
                     var map = new HistoryMaps.HisMap();
                     var dataProvider = {
-                        mapVar: HistoryMaps.maps.Centuries,
+                        mapVar: HistoryMaps.maps.Century,
                         getAreasFromMap: true
                     };
                     map.dataProvider = dataProvider;

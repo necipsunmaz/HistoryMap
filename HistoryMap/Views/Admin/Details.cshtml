@@ -1,0 +1,240 @@
+
+@{
+    ViewData["Title"] = "Admin Panel";
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+
+<head>
+    <link href="~/lib/jquery-ui/themes/base/jquery-ui.min.css" rel="stylesheet" />
+</head>
+<body>
+    <section id="content">
+        <div class="card">
+            <div class="card__header">
+                <h2>Country Edit</h2>
+            </div>
+
+            <div class="card__body">
+                <div class="CONTAINER" style="width: 100%;">
+                    <!-- history slider -->
+                    <div class="HistorySlider" id="HistorySlider">
+                        <div class="HistorySlider_ParticipantName"><p>Yüzyýl Seçiniz</p></div>
+                        <div class="HistorySlider_ClickArea">
+                            <div class="HistorySlider_Track">
+                                <div class="HistorySlider_TrackFill" style="width: 100%;">
+                                    <div class="HistorySlider_Thumb" id="historySlider"></div>
+                                </div>
+                            </div><!-- /.HistorySlider_Track -->
+                            <div class="HistorySlider_Points">
+                                <div class="HistorySlider_Point">0</div>
+                                <div class="HistorySlider_Point">100</div>
+                                <div class="HistorySlider_Point">200</div>
+                                <div class="HistorySlider_Point">300</div>
+                                <div class="HistorySlider_Point">400</div>
+                                <div class="HistorySlider_Point">500</div>
+                                <div class="HistorySlider_Point">600</div>
+                                <div class="HistorySlider_Point">700</div>
+                                <div class="HistorySlider_Point">800</div>
+                                <div class="HistorySlider_Point">900</div>
+                                <div class="HistorySlider_Point">1000</div>
+                                <div class="HistorySlider_Point">1100</div>
+                                <div class="HistorySlider_Point">1200</div>
+                                <div class="HistorySlider_Point">1300</div>
+                                <div class="HistorySlider_Point">1400</div>
+                                <div class="HistorySlider_Point">1500</div>
+                                <div class="HistorySlider_Point">1600</div>
+                                <div class="HistorySlider_Point">1700</div>
+                                <div class="HistorySlider_Point">1800</div>
+                                <div class="HistorySlider_Point">1900</div>
+                                <div class="HistorySlider_Point HistorySlider_PointActive">2000</div>
+                            </div><!-- /.HistorySlider_Points -->
+                        </div><!-- /.HistorySlider_ClickArea -->
+                    </div><!-- /.HistorySlider -->
+                </div><!-- /.CONTAINER -->
+                <div style="width:90%; margin:0 auto" class="tablecontainer">
+                    <a class="popup btn btn-primary" id="popupSave" href="/Admin/Save/0" return false;" style="position: absolute;right: 79px;margin-bottom:20px; margin-top:20px;">Add New Country</a>
+                    <table id="countryTbl" class="dataTable no-footer table table-striped table--vmiddle table-bootgrid">
+                        <thead>
+                            <tr>
+                                <th style="padding:15px;max-width:200px;">Country</th>
+                                <th style="padding:15px;">Description</th>
+                                <th style="padding:15px;min-width:135px;">Edit</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+@section Scripts {
+    <script src="~/js/historySlider.js"></script>
+    <script src="~/js/Admin/dataTable.js"></script>
+    <script src="~/lib/jquery-ui/jquery-ui.min.js"></script>
+    <script>
+        $("document").ready(function () {
+            setTimeout(function () {
+                $('#historySlider').trigger('click');
+            }, 5);
+
+
+            var Century = historySlider.value;
+
+            var oTable = $('#countryTbl').DataTable({
+
+            "columnDefs": [{
+                "defaultContent": "aaa",
+                "targets": "_all"
+            }],
+
+            "ajax": {
+                "url": '/Admin/GetDataCountry',
+                "type": "POST",
+                "data": { Century: Century },
+                "datatype": "json"
+            },
+            "destroy": true,
+            "columns": [
+                { "data": "title", "autoWidth": true },
+                { "data": "description", "autoWidth": true },
+                {
+                    "data": "id", "width": "155px", "render": function (data) {
+                        return '<a class="popup btn btn-default btn-sm" href="/Admin/Save?' + 'id=' + data + '&century=' + Century + '">Edit<a/>' +
+                            '<a class="popup2 btn btn-default btn-sm" href="/Admin/Delete/' + data + '">Delete<a/>';
+                    }
+                }
+            ]
+        });
+
+            $('.tablecontainer').on('click', 'a.popup', function (e) {
+            e.preventDefault();
+            OpenPopup($(this).attr('href'));
+        });
+
+            $('.tablecontainer').on('click', 'a.popup2', function (e) {
+            e.preventDefault();
+            OpenPopup2($(this).attr('href'));
+        });
+
+            function OpenPopup(pageUrl) {
+            var $pageContent = $('<div/>');
+            $pageContent.load(pageUrl, function () {
+                $('#popupForm', $pageContent).removeData('validator');
+                $('#popupForm', $pageContent).removeData('unobtrusiveValidation');
+                $.validator.unobtrusive.parse('form');
+            });
+
+            $dialog = $('<div class="popupWindow" style="overflow:auto"></div>')
+                .html($pageContent).dialog({
+                    draggable: false,
+                    autoOpen: false,
+                    resizable: false,
+                    model: true,
+                    destroy: true,
+                    title: 'Popup Dialog',
+                    height: 650,
+                    width: 800,
+                    close: function () {
+                        $dialog.dialog('destroy').remove();
+                    }
+                })
+            $('.popupWindow').on('submit', '#popupForm', function (e) {
+                var url = $('#popupForm')[0].action;
+                $.ajax({
+                    type: "POST",
+                    data: $('#popupForm').serialize(),
+                    url: url,
+                    success: function (data) {
+                        if (data) {
+                            $dialog.dialog('close');
+                            oTable.ajax.reload();
+                        }
+
+                    }
+
+                });
+
+                e.preventDefault();
+            });
+            $dialog.dialog('open');
+        }
+
+            function OpenPopup2(pageUrl) {
+            var $pageContent = $('<div/>');
+            $pageContent.load(pageUrl, function () {
+                $('#popupForm', $pageContent).removeData('validator');
+                $('#popupForm', $pageContent).removeData('unobtrusiveValidation');
+                $.validator.unobtrusive.parse('form');
+            });
+
+            $dialog = $('<div class="popupWindow" style="overflow:auto"></div>')
+                .html($pageContent).dialog({
+                    draggable: false,
+                    autoOpen: false,
+                    resizable: false,
+                    model: true,
+                    title: 'Popup Dialog',
+                    height: 350,
+                    width: 400,
+                    close: function () {
+                        $dialog.dialog('destroy').remove();
+                    }
+                })
+            $('.popupWindow').on('submit', '#popupForm', function (e) {
+                var url = $('#popupForm')[0].action;
+                $.ajax({
+                    type: "POST",
+                    data: $('#popupForm').serialize(),
+                    url: url,
+                    success: function (data) {
+                        if (data) {
+                            $dialog.dialog('close');
+                            oTable.ajax.reload();
+                        }
+
+                    }
+
+                });
+
+                e.preventDefault();
+            });
+            $dialog.dialog('open');
+        }
+
+            $('#historySlider').click(function () {
+            Century = historySlider.value;
+            var century = document.getElementById("popupSave");
+            century.setAttribute("href", "/Admin/Save?0&century=" + historySlider.value)
+            oTable.destroy();
+            $('#countryTbl').empty();
+            oTable = $('#countryTbl').DataTable({
+
+                "columnDefs": [{
+                    "defaultContent": "aaa",
+                    "targets": "_all"
+                }],
+
+                "ajax": {
+                    "url": '/Admin/GetDataCountry',
+                    "type": "POST",
+                    "data": { Century: Century },
+                    "datatype": "json"
+                },
+                "destroy": true,
+                "columns": [
+                    { "data": "title", "autoWidth": true },
+                    { "data": "description", "autoWidth": true },
+                    {
+                        "data": "id", "width": "155px", "render": function (data) {
+                            return '<a class="popup btn btn-default btn-sm" href="/Admin/Save?' + 'id=' + data + '&century=' + Century + '">Edit<a/>' +
+                                '<a class="popup2 btn btn-default btn-sm" href="/Admin/Delete/' + data + '">Delete<a/>';
+                        }
+                    }
+                ]
+            });
+        });
+
+        });
+    </script>
+}

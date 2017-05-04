@@ -1,0 +1,21 @@
+@model Country
+@{ 
+    Layout = null;
+}
+
+<h2>Delete Country</h2>
+@using (Html.BeginForm("Delete", "Admin", FormMethod.Post, new { id = "popupForm" }))
+{
+    @Html.HiddenFor(a => a.Id)
+    <div class="form-group">
+        <label>Country Name</label>
+        <p>@Model.Title</p>
+    </div>
+    <div class="form-group">
+        <label>Country Details</label>
+        <p>@Model.Description</p>
+    </div>
+    <div>
+        <input type="submit" class="btn btn-default" style="float:right;" value="Delete" />
+    </div>
+}

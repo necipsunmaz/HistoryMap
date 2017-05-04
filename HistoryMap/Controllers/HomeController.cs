@@ -16,10 +16,10 @@ namespace HistoryMap.Controllers
             return View();
         }
 
-        private readonly ApplicationDb db;
-        public HomeController(ApplicationDb _db)
+        private readonly ApplicationDb _db;
+        public HomeController(ApplicationDb db)
         {
-            db = _db;
+            _db = db;
         }
 
 
@@ -31,15 +31,15 @@ namespace HistoryMap.Controllers
         [HttpPost]
         public IActionResult GetCountryDetails(string country, int id)
         {
-            var Country = db.Countries.FirstOrDefault(w => w.Title.Equals(country) && w.Century.Century.Equals(id));
+            var Country = _db.Country.FirstOrDefault(w => w.Title.Equals(country) && w.Century.Centuries.Equals(id));
             return Json(Country);
         }
 
-        public IActionResult GetData(int Centurie)
+        public IActionResult GetData(int Century)
         {
             try
             {
-                var centuryMap = db.Centuries.FirstOrDefault(a => a.Century.Equals(Centurie));
+                var centuryMap = _db.Century.FirstOrDefault(a => a.Centuries.Equals(Century));
                 MemoryStream file = new MemoryStream(centuryMap.Data);
                 //binaryData
                 return new FileStreamResult(file, "application/javascript");
