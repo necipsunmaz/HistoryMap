@@ -1,9 +1,10 @@
 ﻿@{
     ViewData["Title"] = "History Map";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<body style="background-color:#222222; padding:0;">
-    <div class="ip-container" id="ip-container">
+
+<div class="ip-container" id="ip-container">
         <!-- initial header -->
         <header class="ip-header">
             <h1 class="ip-logo">
@@ -82,14 +83,13 @@
             </div><!-- /.HistorySlider -->
         </div><!-- /.CONTAINER -->
     </div>
-</body>
 
 
 @section Scripts{
 
-<script id="centuryMap"></script>/>
+<script id="centuryMap"></script>
 <script src="~/js/modernizr.custom.js"></script>
-<script src="~/js/historymap.js"></script>
+<script src="~/js/historymap.min.js"></script>
 
     <script>
         HistoryMaps.theme = HistoryMaps.themes.black;
@@ -117,13 +117,14 @@
                     };
                     map.dataProvider = dataProvider;
                     map.areasSettings = {
-                        autoZoom: true,
+                        autoZoom: false,
                         rollOverBrightness: 10,
                         selectedBrightness: 20
                     };
                     map.smallMap = new HistoryMaps.SmallMap();
                     map.write("mapdiv");
-                    $("svg").on("click", "path", function () {
+
+                    $(".countryArea").click(function () {
                         var title = { country: $(this).attr('aria-label'), id: historySlider.value };
                         $.ajax({
                             url: '/Home/GetCountryDetails',

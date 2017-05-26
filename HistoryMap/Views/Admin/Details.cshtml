@@ -4,12 +4,12 @@
     Layout = "~/Views/Shared/_Admin_Layout.cshtml";
 }
 
-<head>
-    <link href="~/lib/jquery-ui/themes/base/jquery-ui.min.css" rel="stylesheet" />
-</head>
-<body>
-    <section id="content">
-        <div class="card">
+@section AddToHead{
+<link href="~/lib/jquery-ui/themes/base/jquery-ui.min.css" rel="stylesheet" />
+<link href="~/lib/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet" />
+}
+
+<div class="card">
             <div class="card__header">
                 <h2>Country Edit</h2>
             </div>
@@ -18,7 +18,7 @@
                 <div class="CONTAINER" style="width: 100%;">
                     <!-- history slider -->
                     <div class="HistorySlider" id="HistorySlider">
-                        <div class="HistorySlider_ParticipantName"><p>Yüzyýl Seçiniz</p></div>
+                        <div class="HistorySlider_ParticipantName">Select Century</div>
                         <div class="HistorySlider_ClickArea">
                             <div class="HistorySlider_Track">
                                 <div class="HistorySlider_TrackFill" style="width: 100%;">
@@ -65,13 +65,13 @@
                 </div>
             </div>
         </div>
-    </section>
-</body>
 
 @section Scripts {
-    <script src="~/js/historySlider.js"></script>
-    <script src="~/js/Admin/dataTable.js"></script>
+    <script src="~/js/historySlider.min.js"></script>
+    <script src="~/js/Admin/dataTable.custom.min.js"></script>
     <script src="~/lib/jquery-ui/jquery-ui.min.js"></script>
+    <script src="~/lib/remarkable-bootstrap-notify/bootstrap-notify.min.js"></script>
+    <script src="~/lib/sweetalert2/dist/sweetalert2.min.js"></script>
     <script>
         $("document").ready(function () {
             setTimeout(function () {
@@ -145,8 +145,40 @@
                     type: "POST",
                     data: $('#popupForm').serialize(),
                     url: url,
-                    success: function (data) {
-                        if (data) {
+                    success: function (status) {
+                        if (status == true) {
+                            $.notify({
+                                title: '<strong>Adding Succesful!</strong>',
+                                message: 'We have added your country, congratulations.'
+                            }, {
+                                    type: 'success',
+                                    placement: {
+                                        from: 'bottom',
+                                        align: 'right'
+                                    },
+                                    allow_dismiss: true,
+                                    newest_on_top: true,
+                                    mouse_over: true,
+                                    delay: 4000
+                                });
+                            $dialog.dialog('close');
+                            oTable.ajax.reload();
+                        }
+                        else {
+                            $.notify({
+                                title: '<strong>Adding Failed!</strong>',
+                                message: "We haven't added your country, please try again!"
+                            }, {
+                                    type: 'success',
+                                    placement: {
+                                        from: 'bottom',
+                                        align: 'right'
+                                    },
+                                    allow_dismiss: true,
+                                    newest_on_top: true,
+                                    mouse_over: true,
+                                    delay: 4000
+                                });
                             $dialog.dialog('close');
                             oTable.ajax.reload();
                         }
@@ -187,8 +219,40 @@
                     type: "POST",
                     data: $('#popupForm').serialize(),
                     url: url,
-                    success: function (data) {
-                        if (data) {
+                    success: function (status) {
+                        if (status == true) {
+                            $.notify({
+                                title: '<strong>Deleting Succesful!</strong>',
+                                message: 'We have deleted your country, congratulations.'
+                            }, {
+                                    type: 'success',
+                                    placement: {
+                                        from: 'bottom',
+                                        align: 'right'
+                                    },
+                                    allow_dismiss: true,
+                                    newest_on_top: true,
+                                    mouse_over: true,
+                                    delay: 4000
+                                });
+                            $dialog.dialog('close');
+                            oTable.ajax.reload();
+                        }
+                        else {
+                            $.notify({
+                                title: '<strong>Deleting Failed!</strong>',
+                                message: "We haven't deleted your country, please try again!"
+                            }, {
+                                    type: 'danger',
+                                    placement: {
+                                        from: 'bottom',
+                                        align: 'right'
+                                    },
+                                    allow_dismiss: true,
+                                    newest_on_top: true,
+                                    mouse_over: true,
+                                    delay: 4000
+                                });
                             $dialog.dialog('close');
                             oTable.ajax.reload();
                         }

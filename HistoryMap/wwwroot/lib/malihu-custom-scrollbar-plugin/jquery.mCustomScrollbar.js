@@ -1164,12 +1164,12 @@ and dependencies (minified).
 			switch(t){
 				case "pointerdown": case "MSPointerDown": case "pointermove": case "MSPointerMove": case "pointerup": case "MSPointerUp":
 					return o ? [e.originalEvent.pageY-o[0]+io[0],e.originalEvent.pageX-o[1]+io[1],false] : [e.originalEvent.pageY,e.originalEvent.pageX,false];
-					break;
+
 				case "touchstart": case "touchmove": case "touchend":
 					var touch=e.originalEvent.touches[0] || e.originalEvent.changedTouches[0],
 						touches=e.originalEvent.touches.length || e.originalEvent.changedTouches.length;
 					return e.target.ownerDocument!==document ? [touch.screenY,touch.screenX,touches>1] : [touch.pageY,touch.pageX,touches>1];
-					break;
+
 				default:
 					return o ? [e.pageY-o[0]+io[0],e.pageX-o[1]+io[1],false] : [e.pageY,e.pageX,false];
 			}
@@ -1674,17 +1674,17 @@ and dependencies (minified).
 						touchActive=true;
 						d.tweenRunning=false;
 						_seq("on",btnClass);
-						break;
+						
 					case "mouseup": case "touchend": case "pointerup": case "MSPointerUp":
 					case "mouseout": case "pointerout": case "MSPointerOut":
 						if(seq.type==="stepped"){return;}
 						touchActive=false;
 						if(seq.dir){_seq("off",btnClass);}
-						break;
+						
 					case "click":
 						if(seq.type!=="stepped" || d.tweenRunning){return;}
 						_seq("on",btnClass);
-						break;
+						
 				}
 				function _seq(a,c){
 					seq.scrollAmount=o.scrollButtons.scrollAmount;
@@ -1728,7 +1728,7 @@ and dependencies (minified).
 				switch(e.type){
 					case "blur":
 						if(d.tweenRunning && seq.dir){_seq("off",null);}
-						break;
+						
 					case "keydown": case "keyup":
 						var code=e.keyCode ? e.keyCode : e.which,action="on";
 						if((o.axis!=="x" && (code===38 || code===40)) || (o.axis!=="y" && (code===37 || code===39))){
@@ -1773,7 +1773,7 @@ and dependencies (minified).
 								}
 							}
 						}
-						break;
+						
 				}
 				function _seq(a,c){
 					seq.type=o.keyboard.scrollType;
@@ -1802,13 +1802,13 @@ and dependencies (minified).
 					_stop(el);
 					if(_isNumeric(trigger) && seq.type==="stepped"){return;}
 					_on(once);
-					break;
+					
 				case "off":
 					_off();
 					if(once || (d.tweenRunning && seq.dir)){
 						_on(true);
 					}
-					break;
+					
 			}
 			
 			/* starts sequence */
@@ -1880,12 +1880,12 @@ and dependencies (minified).
 			switch(t){
 				case "function": /* this currently is not used. Consider removing it */
 					return val();
-					break;
+
 				case "object": /* js/jquery object */
 					var obj=val.jquery ? val : $(val);
 					if(!obj.length){return;}
 					return dir==="x" ? _childPos(obj)[1] : _childPos(obj)[0];
-					break;
+
 				case "string": case "number":
 					if(_isNumeric(val)){ /* numeric value */
 						return Math.abs(val);
@@ -1918,7 +1918,7 @@ and dependencies (minified).
 							}
 						}
 					}
-					break;
+
 			}
 		},
 		/* -------------------- */
@@ -2098,7 +2098,7 @@ and dependencies (minified).
 						tsbo=totalScrollBackOffsets[1],
 						totalScrollOffset=tso>0 ? tso/d.scrollRatio.x : 0,
 						totalScrollBackOffset=tsbo>0 ? tsbo/d.scrollRatio.x : 0;
-					break;
+					
 				case "y":
 					var mCSB_dragger=$("#mCSB_"+d.idx+"_dragger_vertical"),
 						property="top",
@@ -2112,7 +2112,7 @@ and dependencies (minified).
 						tsbo=totalScrollBackOffsets[0],
 						totalScrollOffset=tso>0 ? tso/d.scrollRatio.y : 0,
 						totalScrollBackOffset=tsbo>0 ? tsbo/d.scrollRatio.y : 0;
-					break;
+					
 			}
 			if(scrollTo[1]<0 || (scrollTo[0]===0 && scrollTo[1]===0)){
 				scrollTo=[0,0];
@@ -2249,35 +2249,35 @@ and dependencies (minified).
 				switch(type){
 					case "linear": case "mcsLinear":
 						return c*t/d + b;
-						break;
+						
 					case "mcsLinearOut":
 						t/=d; t--; return c * Math.sqrt(1 - t*t) + b;
-						break;
+						
 					case "easeInOutSmooth":
 						t/=d/2;
 						if(t<1) return c/2*t*t + b;
 						t--;
 						return -c/2 * (t*(t-2) - 1) + b;
-						break;
+						
 					case "easeInOutStrong":
 						t/=d/2;
 						if(t<1) return c/2 * Math.pow( 2, 10 * (t - 1) ) + b;
 						t--;
 						return c/2 * ( -Math.pow( 2, -10 * t) + 2 ) + b;
-						break;
+						
 					case "easeInOut": case "mcsEaseInOut":
 						t/=d/2;
 						if(t<1) return c/2*t*t*t + b;
 						t-=2;
 						return c/2*(t*t*t + 2) + b;
-						break;
+						
 					case "easeOutSmooth":
 						t/=d; t--;
 						return -c * (t*t*t*t - 1) + b;
-						break;
+						
 					case "easeOutStrong":
 						return c * ( -Math.pow( 2, -10 * t/d ) + 1 ) + b;
-						break;
+						
 					case "easeOut": case "mcsEaseOut": default:
 						var ts=(t/=d)*t,tc=ts*t;
 						return b+c*(0.499999999999997*tc*ts + -2.5*ts*ts + 5.5*tc + -6.5*ts + 4*t);

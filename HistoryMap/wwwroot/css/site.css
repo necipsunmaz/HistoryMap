@@ -15,8 +15,6 @@
 }
 
 
-body {
-}
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
@@ -38,10 +36,6 @@ textarea {
     line-height: 1.4;
 }
 
-/* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"] {
-    width: 100%;
-}
 
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
@@ -69,9 +63,6 @@ textarea {
     border-width: 1px;
     color: #000000;
     padding: 8px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
 }
 
 .historymapDescriptionTitle {
@@ -81,8 +72,6 @@ textarea {
     padding-bottom: 5px;
 }
 
-.historymapDescriptionWindowCloseButton {
-}
 
 .historymapObjectList ul {
     padding-left: 20px;
@@ -120,145 +109,145 @@ textarea {
 }
 
 .ip-header {
-	position: fixed;
-	top: 0;
-	z-index: 100;
-	min-height: 480px;
-	width: 100%;
-	height: 100%;
-	background: #f1f1f1;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    min-height: 480px;
+    width: 100%;
+    height: 100%;
+    background: #f1f1f1;
 }
 
-.ip-header h1 {
-	margin: 0;
-}
+    .ip-header h1 {
+        margin: 0;
+    }
 
 .ip-logo,
 .ip-loader {
-	position: absolute;
-	left: 0;
-	width: 100%;
-	opacity: 0;
-	cursor: default;
-	pointer-events: none;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    cursor: default;
+    pointer-events: none;
 }
 
 .ip-logo {
-	position: absolute;
-	bottom:70px;
-	height: 100%;
-	-webkit-transform: translate3d(0,25%,0);
-	transform: translate3d(0,25%,0);
+    position: absolute;
+    bottom: 70px;
+    height: 100%;
+    -webkit-transform: translate3d(0,25%,0);
+    transform: translate3d(0,25%,0);
 }
 
 .ip-loader {
-	bottom: 20%;
+    bottom: 20%;
 }
 
 .ip-header .ip-inner {
-	display: block;
-	margin: 0 auto;
+    display: block;
+    margin: 0 auto;
 }
 
 .ip-header .ip-logo svg {
-	min-width: 320px;
-	max-width: 480px;
-	width: 25%;
+    min-width: 320px;
+    max-width: 480px;
+    width: 25%;
 }
 
-.ip-header .ip-logo svg path {
-	fill: #222222;
-}
+    .ip-header .ip-logo svg path {
+        fill: #222222;
+    }
 
 .ip-header .ip-loader svg path {
-	fill: none;
-	stroke-width: 6;
+    fill: none;
+    stroke-width: 6;
 }
 
-.ip-header .ip-loader svg path.ip-loader-circlebg {
-	stroke: #ddd;
-}
+    .ip-header .ip-loader svg path.ip-loader-circlebg {
+        stroke: #ddd;
+    }
 
-.ip-header .ip-loader svg path.ip-loader-circle {
-	-webkit-transition: stroke-dashoffset 0.2s;
-	transition: stroke-dashoffset 0.2s;
-	stroke: #222222;
-}
+    .ip-header .ip-loader svg path.ip-loader-circle {
+        -webkit-transition: stroke-dashoffset 0.2s;
+        transition: stroke-dashoffset 0.2s;
+        stroke: #222222;
+    }
 
 /* Content */
 .ip-main {
-	overflow: hidden;
-	margin: 0 auto;
-	padding: 160px 0 10em 0;
-	max-width: 1100px;
-	width: 90%;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 160px 0 10em 0;
+    max-width: 1100px;
+    width: 90%;
 }
 
-.ip-main h2 {
-	margin: 0;
-	padding: 0.5em 0 1em;
-	color: #be4856;
-	text-align: center;
-	font-size: 4.25em;
-	font-size: 4vw;
-	line-height: 1;
-}
+    .ip-main h2 {
+        margin: 0;
+        padding: 0.5em 0 1em;
+        color: #be4856;
+        text-align: center;
+        font-size: 4.25em;
+        font-size: 4vw;
+        line-height: 1;
+    }
 
 .browser {
-	margin: 0 auto;
-	padding-top: 8%;
-	min-height: 400px;
-	max-width: 1000px;
-	width: 100%;
-	border-radius: 8px;
-	background: #fff url(../img/browser.png) no-repeat 50% 0;
-	background-size: 100%;
-	color: #d3d3d3;
+    margin: 0 auto;
+    padding-top: 8%;
+    min-height: 400px;
+    max-width: 1000px;
+    width: 100%;
+    border-radius: 8px;
+    background: #fff url(../img/browser.png) no-repeat 50% 0;
+    background-size: 100%;
+    color: #d3d3d3;
 }
 
 .box {
-	float: left;
-	padding: 3.5em;
-	width: 33.3%;
-	font-size: 0.7em;
-	line-height: 1.5;
+    float: left;
+    padding: 3.5em;
+    width: 33.3%;
+    font-size: 0.7em;
+    line-height: 1.5;
 }
 
-.box p {
-	font-family: 'Blokk', Arial, sans-serif;
-}
+    .box p {
+        font-family: 'Blokk', Arial, sans-serif;
+    }
 
-[class^="icon-"]::before, 
+[class^="icon-"]::before,
 [class*=" icon-"]::before {
-	display: block;
-	margin-bottom: 0.5em;
-	padding: 0.5em;
-	border-radius: 5px;
-	background: #dfdfdf;
-	color: #fff;
-	text-align: center;
-	text-transform: none;
-	font-weight: normal;
-	font-style: normal;
-	font-variant: normal;
-	font-size: 5em;
-	font-family: 'feather';
-	line-height: 1;
-	speak: none;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+    display: block;
+    margin-bottom: 0.5em;
+    padding: 0.5em;
+    border-radius: 5px;
+    background: #dfdfdf;
+    color: #fff;
+    text-align: center;
+    text-transform: none;
+    font-weight: normal;
+    font-style: normal;
+    font-variant: normal;
+    font-size: 5em;
+    font-family: 'feather';
+    line-height: 1;
+    speak: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .icon-bell:before {
-	content: "\e006";
+    content: "\e006";
 }
 
 .icon-cog:before {
-	content: "\e023";
+    content: "\e023";
 }
 
 .icon-heart:before {
-	content: "\e024";
+    content: "\e024";
 }
 
 /* Animations */
@@ -266,77 +255,101 @@ textarea {
 /* Initial animation of header elements */
 .loading .ip-logo,
 .loading .ip-loader {
-	opacity: 1;
-	-webkit-animation: animInitialHeader 1s cubic-bezier(0.7,0,0.3,1) both;
-	animation: animInitialHeader 1s cubic-bezier(0.7,0,0.3,1) both;
+    opacity: 1;
+    -webkit-animation: animInitialHeader 1s cubic-bezier(0.7,0,0.3,1) both;
+    animation: animInitialHeader 1s cubic-bezier(0.7,0,0.3,1) both;
 }
 
 .loading .ip-loader {
-	-webkit-animation-delay: 0.2s;
-	animation-delay: 0.2s;
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s;
 }
 
 @-webkit-keyframes animInitialHeader {
-	from { opacity: 0; -webkit-transform: translate3d(0,800px,0); }
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0,800px,0);
+    }
 }
 
 @keyframes animInitialHeader {
-	from { opacity: 0; -webkit-transform: translate3d(0,800px,0); transform: translate3d(0,800px,0); }
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0,800px,0);
+        transform: translate3d(0,800px,0);
+    }
 }
 
 /* Header elements when loading finishes */
 .loaded .ip-logo,
 .loaded .ip-loader {
-	opacity: 1;
+    opacity: 1;
 }
 
 .loaded .ip-logo {
-	-webkit-transform-origin: -70% 170%;
-	transform-origin: -70% 170%;
-	-webkit-animation: animLoadedLogo 1s cubic-bezier(0.7,0,0.3,1) forwards;
-	animation: animLoadedLogo 1s cubic-bezier(0.7,0,0.3,1) forwards;
+    -webkit-transform-origin: -70% 170%;
+    transform-origin: -70% 170%;
+    -webkit-animation: animLoadedLogo 1s cubic-bezier(0.7,0,0.3,1) forwards;
+    animation: animLoadedLogo 1s cubic-bezier(0.7,0,0.3,1) forwards;
 }
 
 @-webkit-keyframes animLoadedLogo {
-	to { -webkit-transform: translate3d(0,100%,0) translate3d(0,50px,0) scale3d(0.65,0.65,1); }
+    to {
+        -webkit-transform: translate3d(0,100%,0) translate3d(0,50px,0) scale3d(0.65,0.65,1);
+    }
 }
 
 @keyframes animLoadedLogo {
-	to { -webkit-transform: translate3d(0,100%,0) translate3d(0,50px,0) scale3d(0.65,0.65,1); transform: translate3d(0,100%,0) translate3d(0,50px,0) scale3d(0.65,0.65,1); }
+    to {
+        -webkit-transform: translate3d(0,100%,0) translate3d(0,50px,0) scale3d(0.65,0.65,1);
+        transform: translate3d(0,100%,0) translate3d(0,50px,0) scale3d(0.65,0.65,1);
+    }
 }
 
 .loaded .ip-loader {
-	-webkit-animation: animLoadedLoader 0.5s cubic-bezier(0.7,0,0.3,1) forwards;
-	animation: animLoadedLoader 0.5s cubic-bezier(0.7,0,0.3,1) forwards;
+    -webkit-animation: animLoadedLoader 0.5s cubic-bezier(0.7,0,0.3,1) forwards;
+    animation: animLoadedLoader 0.5s cubic-bezier(0.7,0,0.3,1) forwards;
 }
 
 @-webkit-keyframes animLoadedLoader {
-	to { opacity: 0; -webkit-transform: translate3d(0,-100%,0) scale3d(0.3,0.3,1); }
+    to {
+        opacity: 0;
+        -webkit-transform: translate3d(0,-100%,0) scale3d(0.3,0.3,1);
+    }
 }
 
 @keyframes animLoadedLoader {
-	to { opacity: 0; -webkit-transform: translate3d(0,-100%,0) scale3d(0.3,0.3,1); transform: translate3d(0,-100%,0) scale3d(0.3,0.3,1); }
+    to {
+        opacity: 0;
+        -webkit-transform: translate3d(0,-100%,0) scale3d(0.3,0.3,1);
+        transform: translate3d(0,-100%,0) scale3d(0.3,0.3,1);
+    }
 }
 
 /* Change the color of the logo */
 .loaded .ip-logo svg path {
-	-webkit-transition: all 0.5s ease 0.3s;
-	transition: all 0.5s ease 0.3s;
-	fill: #7a7a7a;
+    -webkit-transition: all 0.5s ease 0.3s;
+    transition: all 0.5s ease 0.3s;
+    fill: #7a7a7a;
 }
 
 /* Header animation when loading finishes */
 .loaded .ip-header {
-	-webkit-animation: animLoadedHeader 1s cubic-bezier(0.7,0,0.3,1) forwards;
-	animation: animLoadedHeader 1s cubic-bezier(0.7,0,0.3,1) forwards;
+    -webkit-animation: animLoadedHeader 1s cubic-bezier(0.7,0,0.3,1) forwards;
+    animation: animLoadedHeader 1s cubic-bezier(0.7,0,0.3,1) forwards;
 }
 
 @-webkit-keyframes animLoadedHeader {
-	to { -webkit-transform: translate3d(0,-100%,0); }
+    to {
+        -webkit-transform: translate3d(0,-100%,0);
+    }
 }
 
 @keyframes animLoadedHeader {
-	to { -webkit-transform: translate3d(0,-100%,0); transform: translate3d(0,-100%,0); }
+    to {
+        -webkit-transform: translate3d(0,-100%,0);
+        transform: translate3d(0,-100%,0);
+    }
 }
 
 /* Content animations */
@@ -344,57 +357,59 @@ textarea {
 .loaded .ip-main .browser,
 .loaded .ip-main .browser .box,
 .loaded .codrops-demos {
-	-webkit-animation: animLoadedContent 1s cubic-bezier(0.7,0,0.3,1) both;
-	animation: animLoadedContent 1s cubic-bezier(0.7,0,0.3,1) both;
+    -webkit-animation: animLoadedContent 1s cubic-bezier(0.7,0,0.3,1) both;
+    animation: animLoadedContent 1s cubic-bezier(0.7,0,0.3,1) both;
 }
 
-.loaded .ip-main .browser,
-.loaded .ip-main .browser .box:first-child {
-	-webkit-animation-delay: 0.1s;
-	animation-delay: 0.1s;
-}
+    .loaded .ip-main .browser,
+    .loaded .ip-main .browser .box:first-child {
+        -webkit-animation-delay: 0.1s;
+        animation-delay: 0.1s;
+    }
 
-.loaded .ip-main .browser .box:nth-child(2) {
-	-webkit-animation-delay: 0.15s;
-	animation-delay: 0.15s;
-}
+        .loaded .ip-main .browser .box:nth-child(2) {
+            -webkit-animation-delay: 0.15s;
+            animation-delay: 0.15s;
+        }
 
-.loaded .ip-main .browser .box:nth-child(3) {
-	-webkit-animation-delay: 0.2s;
-	animation-delay: 0.2s;
-}
+        .loaded .ip-main .browser .box:nth-child(3) {
+            -webkit-animation-delay: 0.2s;
+            animation-delay: 0.2s;
+        }
 
 @-webkit-keyframes animLoadedContent {
-	from { opacity: 0; -webkit-transform: translate3d(0,200px,0); }
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0,200px,0);
+    }
 }
 
 @keyframes animLoadedContent {
-	from { opacity: 0; -webkit-transform: translate3d(0,200px,0); transform: translate3d(0,200px,0); }
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0,200px,0);
+        transform: translate3d(0,200px,0);
+    }
 }
 
-/* Change layout class for header */
-.layout-switch .ip-header {
-
-}
 
 /* No JS */
 .no-js .ip-header {
-	position: relative;
-	min-height: 0px;
+    position: relative;
+    min-height: 0px;
 }
 
 .no-js .ip-header .ip-logo {
-	margin-top: 20px;
-	height: 180px;
-	opacity: 1;
-	-webkit-transform: none;
-	transform: none;
+        margin-top: 20px;
+        height: 180px;
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
 }
 
 .no-js .ip-header .ip-logo svg path {
-	fill: #7a7a7a;
+            fill: #7a7a7a;
 }
-
 /* Media queries */
 
 @media screen and (max-width: 45em) {
@@ -405,7 +420,7 @@ textarea {
 	}
 
 	.box {
-		width: 100%%;
+		width: 100%;
 	}
 
 }
@@ -420,11 +435,8 @@ textarea {
 
 .dialog {
 	position: fixed;
-	display: -webkit-flex;
 	display: flex;
-	-webkit-align-items: center;
 	align-items: center;
-	-webkit-justify-content: center;
 	justify-content: center;
 	pointer-events: none;
 }
@@ -434,9 +446,8 @@ textarea {
 	z-index: 1;
 	background: rgba(55, 58, 71, 0.9);
 	opacity: 0;
-	-webkit-transition: opacity 0.3s;
 	transition: opacity 0.3s;
-	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
 }
 
 .dialog--open .dialog__overlay {
@@ -466,16 +477,9 @@ textarea {
 	font-weight: 400;
 	font-size: 2em;
 	padding: 0 0 2em;
-	margin: 0;
 }
 .dialog--open .dialog__overlay {
-	-webkit-transition-duration: 0.8s;
 	transition-duration: 0.8s;
-}
-
-.dialog--close .dialog__overlay {
-	-webkit-transition-duration: 0.5s;
-	transition-duration: 0.5s;
 }
 
 .dialog__content {
@@ -503,7 +507,6 @@ textarea {
 }
 
 .dialog--open .morph-shape svg rect {
-	-webkit-animation: anim-dash 0.6s forwards;
 	animation: anim-dash 0.6s forwards;
 }
 
@@ -515,17 +518,14 @@ textarea {
 .dialog--open .dialog-inner {
 	padding: 4em;
 	opacity: 1;
-	-webkit-transition: opacity 0.85s 0.35s;
 	transition: opacity 0.85s 0.35s;
 }
 
 .dialog.dialog--open h2 {
-	-webkit-animation: anim-elem-1 0.7s ease-out both;
 	animation: anim-elem-1 0.7s ease-out both;
 }
 
 .dialog.dialog--open button {
-	-webkit-animation: anim-elem-2 0.7s ease-out both;
 	animation: anim-elem-2 0.7s ease-out both;
 }
 
@@ -538,7 +538,7 @@ textarea {
 	}
 }
 
-@-webkit-keyframes anim-dash {
+@keyframes anim-dash {
 	0% {
 		stroke-dashoffset: 1680;
 	}
@@ -549,24 +549,24 @@ textarea {
 
 /* Inner elements animations */
 
-@-webkit-keyframes anim-elem-1 {
-	0% { opacity: 0; -webkit-transform: translate3d(-150px, 0, 0); }
-	100% { opacity: 1; -webkit-transform: translate3d(0, 0, 0); }
+@keyframes anim-elem-1 {
+	0% { opacity: 0; transform: translate3d(-150px, 0, 0); }
+	100% { opacity: 1; transform: translate3d(0, 0, 0); }
 }
 
 @keyframes anim-elem-1 {
-	0% { opacity: 0; -webkit-transform: translate3d(-150px, 0, 0); transform: translate3d(-150px, 0, 0); }
-	100% { opacity: 1; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
-}
-
-@-webkit-keyframes anim-elem-2 {
-	0% { opacity: 0; -webkit-transform: translate3d(150px, 0, 0); }
-	100% { opacity: 1; -webkit-transform: translate3d(0, 0, 0); }
+	0% { opacity: 0; transform: translate3d(-150px, 0, 0); }
+	100% { opacity: 1; transform: translate3d(0, 0, 0); }
 }
 
 @keyframes anim-elem-2 {
-	0% { opacity: 0; -webkit-transform: translate3d(150px, 0, 0); transform: translate3d(150px, 0, 0); }
-	100% { opacity: 1; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+	0% { opacity: 0; transform: translate3d(150px, 0, 0); }
+	100% { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes anim-elem-2 {
+	0% { opacity: 0; transform: translate3d(150px, 0, 0); }
+	100% { opacity: 1; transform: translate3d(0, 0, 0); }
 }
 
 
@@ -591,6 +591,7 @@ textarea {
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+    overflow:hidden;
 }
 
 /* The Close Button */
@@ -608,123 +609,15 @@ textarea {
     cursor: pointer;
 }
 
-/* INPUT RANGE rndCenturies*/
-input[type=range].rndCenturies {
-    -webkit-appearance: none;
-    width: 100%;
-    position: absolute;
-    z-index: 999999;
-    margin-left: 40%;
-}
-
-    input[type=range].rndCenturies:focus {
-        outline: none;
-    }
-
-    input[type=range].rndCenturies::-webkit-slider-runnable-track {
-        width: 100%;
-        height: 28.8px;
-        cursor: pointer;
-        box-shadow: 0px 0px 0px #585858, 0px 0px 0px #656565;
-        background: #585858;
-        border-radius: 0px;
-        border: 2.5px solid #585858;
-    }
-
-    input[type=range].rndCenturies::-webkit-slider-thumb {
-        box-shadow: 1px 1px 15px #ff9800, 0px 0px 1px #ffa21a;
-        border: 0px solid #ff9800;
-        height: 41px;
-        width: 13px;
-        border-radius: 0px;
-        background: #ff9800;
-        cursor: pointer;
-        -webkit-appearance: none;
-        margin-top: -8.6px;
-    }
-
-    input[type=range].rndCenturies:focus::-webkit-slider-runnable-track {
-        background: #d5d5d5;
-    }
-
-    input[type=range].rndCenturies::-moz-range-track {
-        width: 100%;
-        height: 28.8px;
-        cursor: pointer;
-        box-shadow: 0px 0px 0px #585858, 0px 0px 0px #656565;
-        background: #585858;
-        border-radius: 0px;
-        border: 2.5px solid #585858;
-    }
-
-    input[type=range].rndCenturies::-moz-range-thumb {
-        box-shadow: 1px 1px 15px #ff9800, 0px 0px 1px #ffa21a;
-        border: 0px solid #ff9800;
-        height: 41px;
-        width: 13px;
-        border-radius: 0px;
-        background: #ff9800;
-        cursor: pointer;
-    }
-
-    input[type=range].rndCenturies::-ms-track {
-        width: 100%;
-        height: 28.8px;
-        cursor: pointer;
-        background: transparent;
-        border-color: transparent;
-        color: transparent;
-    }
-
-    input[type=range].rndCenturies::-ms-fill-lower {
-        background: #000000;
-        border: 2.5px solid #585858;
-        border-radius: 0px;
-        box-shadow: 0px 0px 0px #585858, 0px 0px 0px #656565;
-    }
-
-    input[type=range].rndCenturies::-ms-fill-upper {
-        background: #585858;
-        border: 2.5px solid #585858;
-        border-radius: 0px;
-        box-shadow: 0px 0px 0px #585858, 0px 0px 0px #656565;
-    }
-
-    input[type=range].rndCenturies::-ms-thumb {
-        box-shadow: 1px 1px 15px #ff9800, 0px 0px 1px #ffa21a;
-        border: 0px solid #ff9800;
-        height: 41px;
-        width: 13px;
-        border-radius: 0px;
-        background: #ff9800;
-        cursor: pointer;
-        height: 28.8px;
-    }
-
-    input[type=range].rndCenturies:focus::-ms-fill-lower {
-        background: #585858;
-    }
-
-    input[type=range].rndCenturies:focus::-ms-fill-upper {
-        background: #d5d5d5;
-    }
-
-
 .HistorySlider_ParticipantName {
     padding-bottom: 10px;
     display: block;
-}
-
-.HistorySlider {
 }
 
 .HistorySlider_ClickArea {
     position: relative;
     padding: 20px 0 15px 0;
     margin-top: -20px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
 }
 
@@ -744,21 +637,17 @@ input[type=range].rndCenturies {
     border: 1px solid #5e5e5e;
     background-color: #757575;
     position: relative;
-    -webkit-transition: all .3s;
     transition: all .3s;
 }
 
 .HistorySlider_TrackFill {
     position: relative;
-    width: 0%;
     height: 5px;
     background-color: #189670;
-    -webkit-transition: width .1s ease-in;
     transition: width .1s ease-in;
 }
 
     .HistorySlider_TrackFill.HistorySlider_TrackFill-stopAnimation {
-        -webkit-transition: none;
         transition: none;
     }
 
@@ -771,7 +660,6 @@ input[type=range].rndCenturies {
     background: #ddd;
     border-radius: 50%;
     cursor: pointer;
-    -webkit-transform: translate(50%, -33.33%);
     transform: translate(50%, -33.33%);
 }
 
@@ -787,13 +675,10 @@ input[type=range].rndCenturies {
 }
 
 .HistorySlider_Points {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: end;
     -ms-flex-align: end;
     align-items: flex-end;
-    -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
     padding-top: 4px;

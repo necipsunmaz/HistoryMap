@@ -9,12 +9,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot/js\Admin\dataTable.custom.js" />
     <Content Remove="wwwroot/js\black.js" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Properties\PublishProfiles\CustomProfile1.pubxml" />
+    <None Remove="Properties\PublishProfiles\CustomProfile2.pubxml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="wwwroot\css\admin.css" />
-    <Content Include="wwwroot\css\admin.min.css" />
     <Content Include="wwwroot\css\material-design-font.css" />
     <Content Include="wwwroot\css\material-design-font.min.css" />
     <Content Include="wwwroot\fonts\MeterialDesignFont\Material-Design-Iconic-Font.eot" />
@@ -78,11 +83,10 @@
     <Content Include="wwwroot\images\icons\weather\9%402x.png" />
     <Content Include="wwwroot\images\icons\weather\9.png" />
     <Content Include="wwwroot\images\loader.svg" />
-    <Content Include="wwwroot\js\accessory.js" />
     <Content Include="wwwroot\js\admin.min.js" />
     <Content Include="wwwroot\js\Admin\admin.min.js" />
-    <Content Include="wwwroot\js\Admin\app.min.js" />
-    <Content Include="wwwroot\js\Admin\dataTable.js" />
+    <Content Include="wwwroot\js\Admin\dataTable.custom.js" />
+    <Content Include="wwwroot\js\Admin\dataTable.custom.min.js" />
     <Content Include="wwwroot\js\Admin\inc\actions.js" />
     <Content Include="wwwroot\js\Admin\inc\functions.js" />
     <Content Include="wwwroot\js\Admin\misc.js" />
@@ -387,6 +391,84 @@
     <Content Include="wwwroot\lib\ckeditor\plugins\icons_hidpi.png" />
     <Content Include="wwwroot\lib\ckeditor\plugins\image\dialogs\image.js" />
     <Content Include="wwwroot\lib\ckeditor\plugins\image\images\noimage.png" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\icons\hidpi\justifyblock.png" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\icons\hidpi\justifycenter.png" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\icons\hidpi\justifyleft.png" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\icons\hidpi\justifyright.png" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\icons\justifyblock.png" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\icons\justifycenter.png" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\icons\justifyleft.png" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\icons\justifyright.png" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\af.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\ar.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\az.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\bg.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\bn.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\bs.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\ca.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\cs.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\cy.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\da.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\de-ch.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\de.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\el.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\en-au.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\en-ca.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\en-gb.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\en.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\eo.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\es.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\et.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\eu.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\fa.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\fi.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\fo.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\fr-ca.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\fr.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\gl.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\gu.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\he.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\hi.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\hr.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\hu.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\id.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\is.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\it.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\ja.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\ka.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\km.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\ko.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\ku.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\lt.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\lv.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\mk.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\mn.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\ms.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\nb.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\nl.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\no.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\oc.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\pl.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\pt-br.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\pt.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\ro.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\ru.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\si.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\sk.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\sl.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\sq.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\sr-latn.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\sr.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\sv.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\th.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\tr.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\tt.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\ug.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\uk.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\vi.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\zh-cn.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\lang\zh.js" />
+    <Content Include="wwwroot\lib\ckeditor\plugins\justify\plugin.js" />
     <Content Include="wwwroot\lib\ckeditor\plugins\link\dialogs\anchor.js" />
     <Content Include="wwwroot\lib\ckeditor\plugins\link\dialogs\link.js" />
     <Content Include="wwwroot\lib\ckeditor\plugins\link\images\anchor.png" />
@@ -557,21 +639,25 @@
     <Content Include="wwwroot\lib\ckeditor\skins\moono-lisa\images\spinner.gif" />
     <Content Include="wwwroot\lib\ckeditor\skins\moono-lisa\readme.md" />
     <Content Include="wwwroot\lib\ckeditor\styles.js" />
+    <Content Include="wwwroot\lib\fileinput\fileinput.js" />
+    <Content Include="wwwroot\lib\fileinput\fileinput.less" />
+    <Content Include="wwwroot\lib\fileinput\fileinput.min.js" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="BuildBundlerMinifier" Version="2.4.337" />
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="1.1.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Session" Version="1.1.1" />
-    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="1.1.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="1.1.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="1.1.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.1" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.0" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="1.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="1.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="1.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="1.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="1.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="1.1.1" />
   </ItemGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0" />

@@ -1,0 +1,273 @@
+@model CenturyViewModel
+@{
+    ViewData["Title"] = "Century";
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+
+@section AddToHead{
+<link href="~/lib/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet" />
+}
+
+<div class="card">
+    <div class="card__header">
+        <h2>Add Century <small>You can upload the file map.</small></h2>
+
+
+        <div class="row">
+                <div class="col-sm-6">
+                    <p>Select Map</p>
+
+                    @using (Html.BeginForm("AddCentury", "Admin", FormMethod.Post, new { @enctype = "multipart/form-data", id="addCentury" }))
+                    {
+                        <div class="form-group">
+                            @Html.TextBoxFor(a => a.Centuries, new { @class = "form-control", @placeholder = "Century Number(Ex: 21)", id="acentury"})
+                            @Html.ValidationMessageFor(a => a.Centuries)
+                        </div>
+                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                                <span class="btn btn-default btn-file">
+                                    <span class="fileinput-new">Select file</span>
+                                    <span class="fileinput-exists">Change</span>
+                                    <input type="hidden" value="" name="..."><input type="file" name="aData" id="aData">
+                                </span>
+                                <span class="fileinput-filename"></span>
+                                <a href="#" class="fileinput__close fileinput-exists" data-dismiss="fileinput">
+                                    <i class="zmdi zmdi-close-circle"></i>
+                                </a>
+                        </div>
+
+                            <input type="submit" id="upload" class="btn btn-default" style="float:right;" value="Save" />
+                    }
+
+                </div>
+            </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card__header">
+        <h2>Update Century <small>You can chance the file map.</small></h2>
+
+
+        <div class="row">
+            <div class="col-sm-6">
+                <p>Select Map</p>
+
+                @using (Html.BeginForm("UpdateCentury", "Admin", FormMethod.Post, new { @enctype = "multipart/form-data", id = "updateCentury" }))
+                {
+                    <div class="form-group">
+                        <input type="number" class="form-control" placeholder="Century Number(Ex: 21)" id="ucentury" />
+                    </div>
+                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                            <span class="btn btn-default btn-file">
+                                <span class="fileinput-new">Select file</span>
+                                <span class="fileinput-exists">Change</span>
+                                <input type="hidden" value="" name="..."><input type="file" name="uData" id="uData">
+                            </span>
+                            <span class="fileinput-filename"></span>
+                            <a href="#" class="fileinput__close fileinput-exists" data-dismiss="fileinput">
+                                <i class="zmdi zmdi-close-circle"></i>
+                            </a>
+                        </div>
+
+                        <input type="submit" id="upload" class="btn btn-default" style="float:right;" value="Update" />
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card__header">
+        <h2>Delete Century <small>You can delete the file map.</small></h2>
+
+
+        <div class="row">
+            <div class="col-sm-6">
+                <p>Select Map</p>
+
+                @using (Html.BeginForm("DeleteCentury", "Admin", FormMethod.Post, new { id = "deleteCentury" }))
+                {
+                    <div class="form-group">
+                        <input type="number" class="form-control" placeholder="Century Number(Ex: 21)" id="dcentury" />
+                    </div>
+                    <input type="submit" id="upload" class="btn btn-default" style="float:right;" value="Delete" />
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts{
+<script src="~/lib/jquery.validation/dist/jquery.validate.js"></script>
+<script src="~/lib/Microsoft.jQuery.Unobtrusive.Validation/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/lib/remarkable-bootstrap-notify/bootstrap-notify.min.js"></script>
+<script src="~/lib/sweetalert2/dist/sweetalert2.min.js"></script>
+<script src="~/lib/fileinput/fileinput.min.js"></script>
+<script>
+        $(document).ready(function () {
+            $('#addCentury').on('submit', function (e) {
+                e.preventDefault();
+                console.log("submit event");
+                var form = $('form')[0];
+                var formData = new FormData();
+                formData.append('Data', $('#aData')[0].files[0]);
+                formData.append('Centuries', $('#acentury').val());
+                $.ajax({
+                    url: '/Admin/AddCentury',
+                    type: 'POST',
+                    data: formData,
+                    dataType: 'json',
+                    contentType: false,
+                    processData: false,
+                    success: function (status) {
+                        if (status == true) {
+                            $.notify({
+                                title: '<strong>Upload Succesful!</strong>',
+                                message: 'We are upload your century file, congratulations.'
+                            }, {
+                                    type: 'success',
+                                    placement: {
+                                        from: 'bottom',
+                                        align: 'right'
+                                    },
+                                    allow_dismiss: true,
+                                    newest_on_top: true,
+                                    mouse_over: true,
+                                    delay: 4000
+                                });
+                        } else {
+                            $.notify({
+                                title: '<strong>Sorry!</strong>',
+                                message: 'We can not upload your Century. Try again!'
+                            }, {
+                                    type: 'danger',
+                                    placement: {
+                                        from: 'bottom',
+                                        align: 'right'
+                                    },
+                                    allow_dismiss: true,
+                                    newest_on_top: true,
+                                    mouse_over: true,
+                                    delay: 4000
+                                });
+                        }
+
+                    }
+                })
+
+            });
+
+            $('#updateCentury').on('submit', function (e) {
+                e.preventDefault();
+                console.log("submit event");
+                var form = $('form')[0];
+                var formData = new FormData();
+                formData.append('Data', $('#uData')[0].files[0]);
+                formData.append('Centuries', $('#ucentury').val());
+                $.ajax({
+                    url: '/Admin/UpdateCentury',
+                    type: 'POST',
+                    data: formData,
+                    dataType: 'json',
+                    contentType: false,
+                    processData: false,
+                    success: function (status) {
+                        if (status == true) {
+                            $.notify({
+                                title: '<strong>Upload Succesful!</strong>',
+                                message: 'We are upload your century file, congratulations.'
+                            }, {
+                                    type: 'success',
+                                    placement: {
+                                        from: 'bottom',
+                                        align: 'right'
+                                    },
+                                    allow_dismiss: true,
+                                    newest_on_top: true,
+                                    mouse_over: true,
+                                    delay: 4000
+                                });
+                        } else {
+                            $.notify({
+                                title: '<strong>Sorry!</strong>',
+                                message: 'We can not upload your Century. Try again!'
+                            }, {
+                                    type: 'danger',
+                                    placement: {
+                                        from: 'bottom',
+                                        align: 'right'
+                                    },
+                                    allow_dismiss: true,
+                                    newest_on_top: true,
+                                    mouse_over: true,
+                                    delay: 4000
+                                });
+                        }
+
+                    }
+                })
+
+            });
+
+            $('#deleteCentury').on('submit', function (e) {
+                e.preventDefault();
+                console.log("submit event");
+                var form = $('form')[0];
+                var formData = new FormData();
+                formData.append('Centuries', $('#dcentury').val());
+                $.ajax({
+                    url: '/Admin/DeleteCentury',
+                    type: 'POST',
+                    data: formData,
+                    dataType: 'json',
+                    contentType: false,
+                    processData: false,
+                    success: function (status) {
+                        if (status == true) {
+                            $.notify({
+                                title: '<strong>Upload Succesful!</strong>',
+                                message: 'We are upload your century file, congratulations.'
+                            }, {
+                                    type: 'success',
+                                    placement: {
+                                        from: 'bottom',
+                                        align: 'right'
+                                    },
+                                    allow_dismiss: true,
+                                    newest_on_top: true,
+                                    mouse_over: true,
+                                    delay: 4000
+                                });
+                        } else {
+                            $.notify({
+                                title: '<strong>Sorry!</strong>',
+                                message: 'We can not upload your Century. Try again!'
+                            }, {
+                                    type: 'danger',
+                                    placement: {
+                                        from: 'bottom',
+                                        align: 'right'
+                                    },
+                                    allow_dismiss: true,
+                                    newest_on_top: true,
+                                    mouse_over: true,
+                                    delay: 4000
+                                });
+                        }
+
+                    }
+                })
+
+            });
+
+        });
+    </script>
+}
+
+
+

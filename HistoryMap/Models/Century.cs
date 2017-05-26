@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -32,6 +33,7 @@ namespace HistoryMap.Models
         public int Id { get; set; }
 
         [Required]
+        [Remote("IsCenturyExists", "Admin", ErrorMessage = "Century alredy in use!")]
         public int Centuries { get; set; }
 
         [Required]

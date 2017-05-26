@@ -10,7 +10,7 @@
 {
     if (Model != null && Model.Id > 0)
     {
-        Html.HiddenFor(a => a.Id);
+        @Html.HiddenFor(a => a.Id);
     }
 
     @Html.HiddenFor(a => a.CenturyId, new { @id = "centuryId" })

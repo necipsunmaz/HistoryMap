@@ -251,7 +251,7 @@ $.validator.addMethod( "cifES", function( value ) {
 		return control === control_digit || control === control_letter;
 	}
 
-	return false;
+
 
 }, "Please specify a valid CIF number." );
 

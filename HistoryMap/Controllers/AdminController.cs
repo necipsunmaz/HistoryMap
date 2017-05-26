@@ -138,6 +138,7 @@ namespace HistoryMap.Controllers
                         if (v != null)
                         {
                             v.Title = country.Title;
+                            v.Description = country.Description;
                             v.Details = country.Details;
                         }
                     }
@@ -151,7 +152,7 @@ namespace HistoryMap.Controllers
                 }
             }
 
-            return Json(new { data = new { status = status } });
+            return Json(status);
         }
 
         [Authorize]
@@ -187,21 +188,27 @@ namespace HistoryMap.Controllers
                     status = true;
                 }
             }
-            return Json(new { Data = new { status = status } }); //    Json(new { data = new { status = status } });
+            return Json(status); //    Json(new { data = new { status = status } });
         }
 
         [Authorize]
         [HttpGet]
-        public IActionResult AddCentury()
+        public IActionResult Century()
         {
             return View();
+        }
+
+        [Authorize]
+        public JsonResult IsCenturyExists(int Centuries)
+        {
+            return Json(!_db.Century.Any(x => x.Centuries.Equals(Centuries)));
         }
 
         [Authorize]
         [HttpPost]
         public IActionResult AddCentury(CenturyViewModel model)
         {
-
+            bool status = false;
             if (ModelState.IsValid)
             {
                 var century = new Century();
@@ -213,12 +220,43 @@ namespace HistoryMap.Controllers
                 }
                 _db.Century.Add(century);
                 _db.SaveChanges();
-                return Content("alert('Succesfull!');");
+                status = true;
             }
+            return Json(status);
+        }
 
-           return Content("alert('Wrong!');");
+        [Authorize]
+        [HttpPost]
+        public IActionResult UpdateCentury(CenturyViewModel model)
+        {
+            bool status = false;
+            if (ModelState.IsValid)
+            {
+                var century = _db.Century.FirstOrDefault(x => x.Centuries.Equals(model.Centuries));
+                using (var memoryStream = new MemoryStream())
+                {
+                    model.Data.CopyTo(memoryStream);
+                    century.Data = memoryStream.ToArray();
+                }
+                _db.SaveChanges();
+                status = true;
+            }
+            return Json(status);
+        }
 
-
+        [Authorize]
+        [HttpPost]
+        public IActionResult DeleteCentury(CenturyViewModel model)
+        {
+            bool status = false;
+            var x = _db.Century.FirstOrDefault(a => a.Centuries.Equals(model.Centuries));
+            if (x != null)
+            {
+                _db.Century.Remove(x);
+                _db.SaveChanges();
+                status = true;
+            }
+            return Json(status);
         }
     }
 }
