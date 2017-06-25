@@ -19,7 +19,7 @@ Examples and demonstration:
 
 ![alt text](http://i.imgur.com/DCBExSN.jpg)
 
-[![Watch the demo video](http://i.imgur.com/xCq6W8a.jpg)](https://youtu.be/Md7LJ4JmQQ4)
+[![Watch the demo video](http://i.imgur.com/TdyGWrn.jpg)](https://youtu.be/Md7LJ4JmQQ4)
 
 
 ## How to install?
