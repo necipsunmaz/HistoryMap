@@ -1,8 +1,7 @@
 History Map Project
 ===================
 
-[![Join the chat at https://gitter.im/necipsunmaz(https://gitter.im/necipsunmaz.svg)](https://gitter.im/necipsunmaz)
-
+[![Join the chat at https://gitter.im/necipsunmaz](https://img.shields.io/badge/GITTER-join%20chat-green.svg)](https://gitter.im/necipsunmaz/Lobby?source=orgpage?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 This project has been developed to be completely dynamic as you can instantly review the world history on a single map.
 
@@ -20,7 +19,7 @@ Examples and demonstration:
 
 ![alt text](http://i.imgur.com/DCBExSN.jpg)
 
-[![Watch the demo video]](https://youtu.be/Md7LJ4JmQQ4)
+[![Watch the demo video](http://i.imgur.com/xCq6W8a.jpg)](https://youtu.be/Md7LJ4JmQQ4)
 
 
 ## How to install?
